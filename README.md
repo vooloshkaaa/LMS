@@ -1,30 +1,115 @@
-# React + TypeScript + Vite
+# Lessons Management System (LMS)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Web-застосунок для керування навчальним центром англійської мови: студенти, викладачі, групи, розклад, відвідуваність, платежі та базова аналітика.
 
-Currently, two official plugins are available:
+Проєкт реалізовано як SPA на React + TypeScript із маршрутизацією та централізованим станом через контексти.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Основні можливості
 
-## Expanding the ESLint configuration
+- Авторизація користувачів із ролями: `admin`, `teacher`, `student`.
+- Дашборд із загальною інформацією та ключовими показниками.
+- Управління студентами: додавання, редагування, видалення, контроль балансу.
+- Управління викладачами: профілі, спеціалізації, прив'язані групи.
+- Управління групами: рівень, склад студентів, ліміт місць.
+- Розклад занять: групові та індивідуальні уроки.
+- Облік відвідуваності з автоматичним списанням вартості уроку.
+- Фінансовий модуль: депозити та платежі за заняття.
+- Аналітика: дохід, відвідуваність, навантаження викладачів.
+- Сторінки для студентів: мої уроки, бронювання уроку, мій баланс.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Маршрути застосунку
 
-- Configure the top-level `parserOptions` property like this:
+- `/login` - вхід у систему.
+- `/dashboard` - головна інформаційна панель.
+- `/students` - модуль студентів.
+- `/teachers` - модуль викладачів.
+- `/groups` - модуль груп.
+- `/schedule` - розклад уроків.
+- `/payments` - історія та облік платежів.
+- `/analytics` - аналітичні графіки та метрики.
+- `/attendance` - відмітка відвідуваності.
+- `/my-lessons` - персональні уроки студента.
+- `/book-lesson` - бронювання індивідуального уроку.
+- `/my-balance` - баланс студента.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## Технологічний стек
+
+- `React 18` + `TypeScript`
+- `Vite` для збірки та dev-сервера
+- `React Router` для клієнтської навігації
+- `Tailwind CSS` для стилізації
+- `Recharts` для графіків
+- `React Hook Form` + `Zod` для форм і валідації
+- `Sonner` для toast-сповіщень
+
+## Архітектура стану
+
+- `AuthContext`:
+  - зберігає поточного користувача;
+  - виконує `login/logout`;
+  - зберігає сесію в `sessionStorage`.
+- `LMSContext`:
+  - зберігає колекції студентів, викладачів, груп, уроків, платежів, сповіщень;
+  - надає CRUD-операції;
+  - обробляє бізнес-логіку відвідуваності та змін балансу.
+
+## Дані в поточній версії
+
+Поточна реалізація використовує локальні тестові дані (`mockData`) без реального бекенду та БД. Це зручно для демонстрації функціоналу й захисту дипломного проєкту.
+
+## Запуск локально
+
+### 1) Вимоги
+
+- `Node.js` версії 18+ (рекомендовано LTS)
+- `npm`
+
+### 2) Встановлення залежностей
+
+```bash
+npm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### 3) Запуск dev-сервера
+
+```bash
+npm run dev
+```
+
+Після запуску відкрий адресу, яку покаже термінал (зазвичай `http://localhost:5173`).
+
+## Скрипти
+
+- `npm run dev` - запуск у режимі розробки.
+- `npm run build` - production-збірка.
+- `npm run preview` - локальний перегляд production-збірки.
+- `npm run lint` - перевірка коду ESLint.
+- `npm run types:supabase` - генерація TypeScript-типів Supabase (за наявності налаштованого проєкту).
+
+## Структура проєкту
+
+```text
+src/
+  components/      # UI-компоненти
+  contexts/        # AuthContext, LMSContext
+  data/            # mock-дані
+  pages/           # сторінки застосунку
+  types/           # TypeScript-типи домену LMS
+  App.tsx          # маршрути застосунку
+```
+
+## Можливі покращення
+
+- Підключення реального бекенду 
+- Повноцінна рольова авторизація на рівні маршрутів.
+- Збереження даних у БД замість `mockData`.
+- Інтеграція push/email-сповіщень.
+- Розширена звітність (експорт у PDF/Excel).
+
+## Призначення проєкту
+
+Цей LMS створено як навчально-практичний дипломний проєкт для демонстрації:
+- проєктування SPA-архітектури;
+- організації доменної моделі навчального центру;
+- реалізації базових бізнес-процесів (розклад, фінанси, відвідуваність);
+- застосування сучасного frontend-стеку на TypeScript.
