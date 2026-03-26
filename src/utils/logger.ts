@@ -45,3 +45,5 @@ export const getLogLevel = () => logger.getLevel();
 
 // Default export for convenience
 export default logger;
+
+log.setLevel(import.meta.env.VITE_LOG_LEVEL || "info");
