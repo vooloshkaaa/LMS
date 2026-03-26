@@ -42,3 +42,6 @@ export const setLogLevel = (level: log.LogLevelDesc) => {
 
 // Export current level
 export const getLogLevel = () => logger.getLevel();
+
+// Default export for convenience
+export default logger;
