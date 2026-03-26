@@ -1,4 +1,5 @@
 import { logger } from './logger';
+import { errorLocalization, LocalizedErrorContent } from './localization/errorLocalization';
 
 // Типи для обробки помилок
 export interface ErrorContext {
@@ -194,6 +195,31 @@ export class ErrorHandler {
   // Отримання помилки за ID
   public getErrorById(id: string): ErrorDetails | undefined {
     return this.errorQueue.find(error => error.id === id);
+  }
+
+  // Отримання локалізованого контенту помилки
+  public getLocalizedError(error: ErrorDetails | string, customMessage?: string): LocalizedErrorContent {
+    const errorDetails = typeof error === 'string' 
+      ? {
+          id: `ERR_${Date.now()}`,
+          message: error,
+          category: 'system' as const,
+          severity: 'medium' as const,
+          timestamp: new Date().toISOString()
+        }
+      : error;
+    
+    return errorLocalization.getLocalizedError(errorDetails, customMessage);
+  }
+
+  // Встановлення мови локалізації
+  public setLocale(locale: 'uk' | 'en'): void {
+    errorLocalization.setLocale(locale);
+  }
+
+  // Отримання поточної мови
+  public getLocale(): 'uk' | 'en' {
+    return errorLocalization.getLocale();
   }
 
   // Статистика помилок
