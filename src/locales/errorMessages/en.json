@@ -1,0 +1,151 @@
+{
+  "errors": {
+    "network": {
+      "title": "Network Connection Problem",
+      "messages": {
+        "timeout": "Connection timeout. Please check your internet connection.",
+        "connection_failed": "Failed to connect to server. Please try again later.",
+        "server_unavailable": "Server temporarily unavailable. We are working on the issue.",
+        "offline": "You are working offline. Some features may be unavailable."
+      },
+      "actions": {
+        "retry": "Try Again",
+        "check_connection": "Check Connection",
+        "refresh": "Refresh Page",
+        "offline_mode": "Continue Offline"
+      }
+    },
+    "authentication": {
+      "title": "Authentication Error",
+      "messages": {
+        "invalid_credentials": "Invalid login or password. Please check your credentials.",
+        "session_expired": "Your session has expired. Please log in again.",
+        "account_locked": "Your account has been locked. Please contact administrator.",
+        "not_authorized": "You don't have access to this resource.",
+        "token_invalid": "Access token is invalid. Please log in again."
+      },
+      "actions": {
+        "login": "Log In",
+        "reset_password": "Reset Password",
+        "contact_admin": "Contact Administrator",
+        "go_home": "Go Home"
+      }
+    },
+    "validation": {
+      "title": "Validation Error",
+      "messages": {
+        "required_field": "This field is required.",
+        "invalid_email": "Please enter a valid email address.",
+        "password_too_short": "Password must be at least 6 characters long.",
+        "passwords_not_match": "Passwords do not match.",
+        "invalid_phone": "Please enter a valid phone number.",
+        "file_too_large": "File size exceeds the allowed limit.",
+        "invalid_format": "Unsupported file format.",
+        "date_invalid": "Please enter a valid date.",
+        "number_invalid": "Please enter a valid number."
+      },
+      "actions": {
+        "fix_field": "Fix Field",
+        "check_requirements": "Check Requirements",
+        "upload_another": "Upload Another File"
+      }
+    },
+    "authorization": {
+      "title": "Access Denied",
+      "messages": {
+        "insufficient_permissions": "You don't have sufficient permissions for this action.",
+        "resource_not_found": "Requested resource not found.",
+        "access_denied": "Access to this resource is denied.",
+        "role_required": "Higher privileges are required to perform this action."
+      },
+      "actions": {
+        "request_access": "Request Access",
+        "contact_admin": "Contact Administrator",
+        "go_back": "Go Back"
+      }
+    },
+    "business": {
+      "title": "Operation Error",
+      "messages": {
+        "operation_failed": "Failed to perform operation. Please try again.",
+        "resource_busy": "Resource is currently being used by another user.",
+        "quota_exceeded": "Resource usage quota exceeded.",
+        "conflict": "Data conflict. Please refresh the page and try again.",
+        "dependency_missing": "Missing dependencies for the operation."
+      },
+      "actions": {
+        "retry": "Try Again",
+        "refresh": "Refresh Data",
+        "contact_support": "Contact Support"
+      }
+    },
+    "system": {
+      "title": "System Error",
+      "messages": {
+        "internal_error": "Internal server error. We are working on resolving this.",
+        "service_unavailable": "Service temporarily unavailable.",
+        "database_error": "Database operation error.",
+        "maintenance": "System under maintenance.",
+        "unexpected_error": "An unexpected error occurred."
+      },
+      "actions": {
+        "retry": "Try Again",
+        "refresh": "Refresh Page",
+        "report_issue": "Report Issue",
+        "go_home": "Go Home"
+      }
+    },
+    "ui": {
+      "title": "Interface Error",
+      "messages": {
+        "component_failed": "Failed to load component.",
+        "render_error": "Page rendering error.",
+        "interaction_failed": "Failed to perform action."
+      },
+      "actions": {
+        "retry": "Try Again",
+        "refresh": "Reload Page",
+        "report_issue": "Report Issue"
+      }
+    }
+  },
+  "common": {
+    "error_occurred": "An Error Occurred",
+    "error_id": "Error ID",
+    "error_details": "Error Details",
+    "what_happened": "What Happened?",
+    "what_to_do": "What to Do?",
+    "need_help": "Need Help?",
+    "report_problem": "Report Problem",
+    "contact_support": "Contact Support",
+    "try_again": "Try Again",
+    "go_back": "Go Back",
+    "go_home": "Go Home",
+    "close": "Close",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "loading": "Loading...",
+    "success": "Success",
+    "warning": "Warning",
+    "info": "Information"
+  },
+  "support": {
+    "title": "Report an Issue",
+    "description": "Describe the issue and we'll try to resolve it as quickly as possible.",
+    "form": {
+      "name": "Your Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Issue Description",
+      "attach_screenshot": "Attach Screenshot",
+      "submit": "Send Message",
+      "success": "Message sent successfully. Thank you!",
+      "error": "Failed to send message. Please try again."
+    },
+    "contact_info": {
+      "phone": "Support Phone",
+      "email": "Support Email",
+      "hours": "Support Hours"
+    }
+  }
+}
