@@ -4,6 +4,12 @@ import App from "./App.tsx";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import logger from "./utils/logger";
+import { initializeAppProfilers } from "./utils/profiling/setup";
+
+// Ініціалізація профілерів
+initializeAppProfilers().catch(error => {
+  logger.error("Failed to initialize profilers:", error);
+});
 
 logger.info("Application started");
 
