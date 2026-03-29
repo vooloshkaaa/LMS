@@ -5,6 +5,7 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import logger from "./utils/logger";
 import { initializeAppProfilers } from "./utils/profiling/setup";
+import "./utils/profiling/runProfiling"; // Автоматичне профілювання в dev режимі
 
 // Ініціалізація профілерів
 initializeAppProfilers().catch(error => {
