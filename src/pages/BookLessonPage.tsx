@@ -25,7 +25,7 @@ const BookLessonPage: React.FC = () => {
     if (!lesson || !student) return;
 
     if (student.balance < lesson.cost) {
-      toast.error(`Insufficient balance. You need $${lesson.cost} but have $${student.balance.toFixed(2)}`);
+      toast.error(`Недостатньо коштів. Потрібно ${lesson.cost} грн, а у вас ${student.balance.toFixed(2)} грн`);
       return;
     }
 
@@ -63,7 +63,7 @@ const BookLessonPage: React.FC = () => {
               <p className="text-sm font-semibold text-slate-700">Your current balance</p>
               <p className={`text-xl font-bold ${student.balance < 50 ? 'text-red-600' : 'text-teal-700'}`}
                 style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                ${student.balance.toFixed(2)}
+                {student.balance.toFixed(2)} грн
               </p>
             </div>
             {student.balance < 50 && (
@@ -99,7 +99,7 @@ const BookLessonPage: React.FC = () => {
                       INDIVIDUAL
                     </span>
                     <span className="text-lg font-bold text-slate-800" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                      ${lesson.cost}
+                      {lesson.cost} грн
                     </span>
                   </div>
                   <h3 className="font-bold text-slate-800 text-sm mb-3" style={{ fontFamily: 'Syne, sans-serif' }}>

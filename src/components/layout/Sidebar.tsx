@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import {
   LayoutDashboard, Users, GraduationCap, BookOpen, Calendar,
   CreditCard, BarChart3, LogOut, ChevronRight, UserCircle, BookMarked
@@ -16,26 +17,27 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { label: 'Dashboard', icon: LayoutDashboard, path: '/dashboard', roles: ['admin', 'teacher', 'student'] },
-  { label: 'Students', icon: Users, path: '/students', roles: ['admin'] },
-  { label: 'Teachers', icon: UserCircle, path: '/teachers', roles: ['admin'] },
-  { label: 'Groups', icon: BookMarked, path: '/groups', roles: ['admin', 'teacher'] },
-  { label: 'Schedule', icon: Calendar, path: '/schedule', roles: ['admin', 'teacher'] },
-  { label: 'My Lessons', icon: BookOpen, path: '/my-lessons', roles: ['student'] },
-  { label: 'Book a Lesson', icon: Calendar, path: '/book-lesson', roles: ['student'] },
-  { label: 'Payments', icon: CreditCard, path: '/payments', roles: ['admin'] },
-  { label: 'My Balance', icon: CreditCard, path: '/my-balance', roles: ['student'] },
-  { label: 'Analytics', icon: BarChart3, path: '/analytics', roles: ['admin'] },
-  { label: 'Attendance', icon: GraduationCap, path: '/attendance', roles: ['teacher'] },
+  { label: 'nav.dashboard', icon: LayoutDashboard, path: '/dashboard', roles: ['admin', 'teacher', 'student'] },
+  { label: 'nav.students', icon: Users, path: '/students', roles: ['admin'] },
+  { label: 'nav.teachers', icon: UserCircle, path: '/teachers', roles: ['admin'] },
+  { label: 'nav.groups', icon: BookMarked, path: '/groups', roles: ['admin', 'teacher'] },
+  { label: 'nav.schedule', icon: Calendar, path: '/schedule', roles: ['admin', 'teacher'] },
+  { label: 'nav.myLessons', icon: BookOpen, path: '/my-lessons', roles: ['student'] },
+  { label: 'nav.bookLesson', icon: Calendar, path: '/book-lesson', roles: ['student'] },
+  { label: 'nav.payments', icon: CreditCard, path: '/payments', roles: ['admin'] },
+  { label: 'nav.myBalance', icon: CreditCard, path: '/my-balance', roles: ['student'] },
+  { label: 'nav.analytics', icon: BarChart3, path: '/analytics', roles: ['admin'] },
+  { label: 'nav.attendance', icon: GraduationCap, path: '/attendance', roles: ['teacher'] },
 ];
 
 const Sidebar: React.FC = () => {
   const { user, logout } = useAuth();
+  const { t } = useLanguage();
   const navigate = useNavigate();
 
   const handleLogout = () => {
     logout();
-    toast.success('Logged out successfully');
+    toast.success(t('sidebar.loggedOut'));
     navigate('/login');
   };
 
@@ -62,7 +64,7 @@ const Sidebar: React.FC = () => {
               LinguaFlow
             </h1>
             <p className="text-slate-500 text-[10px] mt-0.5" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
-              School Management
+              {t('sidebar.schoolManagement')}
             </p>
           </div>
         </div>
@@ -73,7 +75,7 @@ const Sidebar: React.FC = () => {
         <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider ${user ? roleColors[user.role] : ''}`}
           style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
           <div className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
-          {user?.role}
+          {t(`role.${user?.role}`)}
         </div>
       </div>
 
@@ -103,7 +105,7 @@ const Sidebar: React.FC = () => {
                   {({ isActive }) => (
                     <>
                       <Icon className={`w-4 h-4 flex-shrink-0 transition-colors ${isActive ? 'text-teal-400' : 'text-slate-500 group-hover:text-slate-300'}`} />
-                      <span className="flex-1">{item.label}</span>
+                      <span className="flex-1">{t(item.label)}</span>
                       {isActive && <ChevronRight className="w-3 h-3 text-teal-400/60" />}
                     </>
                   )}
@@ -132,7 +134,7 @@ const Sidebar: React.FC = () => {
           <button
             onClick={handleLogout}
             className="p-1.5 rounded-lg text-slate-500 hover:text-red-400 hover:bg-red-500/10 transition-all"
-            title="Logout"
+            title={t('nav.logout')}
           >
             <LogOut className="w-3.5 h-3.5" />
           </button>

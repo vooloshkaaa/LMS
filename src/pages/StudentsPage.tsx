@@ -97,7 +97,7 @@ const StudentsPage: React.FC = () => {
     if (!amount || amount <= 0) { toast.error('Enter a valid amount'); return; }
     if (!depositModal) return;
     addPayment({ studentId: depositModal.id, amount, type: 'DEPOSIT', description: 'Manual deposit', date: new Date().toISOString().split('T')[0] });
-    toast.success(`$${amount} deposited for ${depositModal.name}`);
+    toast.success(`${amount} грн deposited for ${depositModal.name}`);
     setDepositModal(null);
     setDepositAmount('');
   };
@@ -190,7 +190,7 @@ const StudentsPage: React.FC = () => {
                     <td className="px-5 py-3.5">
                       <span className={`text-sm font-semibold ${student.balance < 100 ? 'text-red-500' : 'text-emerald-600'}`}
                         style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                        ${student.balance.toFixed(2)}
+                        {student.balance.toFixed(2)} грн
                       </span>
                     </td>
                     <td className="px-5 py-3.5 text-sm text-slate-500" style={{ fontFamily: 'JetBrains Mono, monospace' }}>{student.createdAt}</td>
@@ -275,7 +275,7 @@ const StudentsPage: React.FC = () => {
                   <span className="text-sm text-slate-500">Balance</span>
                   <span className={`text-lg font-bold ${selectedStudent.balance < 100 ? 'text-red-500' : 'text-emerald-600'}`}
                     style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                    ${selectedStudent.balance.toFixed(2)}
+                    {selectedStudent.balance.toFixed(2)} грн
                   </span>
                 </div>
                 <div className="flex gap-2 pt-2">
@@ -344,7 +344,7 @@ const StudentsPage: React.FC = () => {
                 </div>
                 {!editStudent && (
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">Initial Balance ($)</label>
+                    <label className="block text-sm font-medium text-slate-700 mb-1">Початковий баланс (грн)</label>
                     <input
                       type="number"
                       value={form.balance}
@@ -391,11 +391,11 @@ const StudentsPage: React.FC = () => {
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-slate-800">{depositModal.name}</p>
-                    <p className="text-xs text-slate-400">Current balance: <span className="font-semibold text-emerald-600">${depositModal.balance.toFixed(2)}</span></p>
+                    <p className="text-xs text-slate-400">Поточний баланс: <span className="font-semibold text-emerald-600">{depositModal.balance.toFixed(2)} грн</span></p>
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">Amount ($)</label>
+                  <label className="block text-sm font-medium text-slate-700 mb-1">Сума (грн)</label>
                   <input
                     type="number"
                     value={depositAmount}

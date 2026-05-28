@@ -45,7 +45,7 @@ const AnalyticsPage: React.FC = () => {
         {/* KPI cards */}
         <div className="grid grid-cols-3 gap-4">
           {[
-            { label: 'Total Revenue', value: `$${totalRevenue.toLocaleString()}`, sub: `${filteredRevenue.length} months`, color: 'from-teal-500 to-teal-600' },
+            { label: 'Total Revenue', value: `${totalRevenue.toLocaleString()} грн`, sub: `${filteredRevenue.length} months`, color: 'from-teal-500 to-teal-600' },
             { label: 'Avg Attendance Rate', value: `${avgAttendance}%`, sub: 'across all lessons', color: 'from-blue-500 to-blue-600' },
             { label: 'Top Teacher', value: topTeacher.teacher.split(' ')[0], sub: `${topTeacher.lessons} lessons`, color: 'from-amber-500 to-amber-600' },
           ].map((kpi, i) => (
@@ -73,10 +73,10 @@ const AnalyticsPage: React.FC = () => {
           <div className="flex items-center justify-between mb-5">
             <div>
               <h3 className="font-bold text-slate-800" style={{ fontFamily: 'Syne, sans-serif' }}>Revenue per Month</h3>
-              <p className="text-xs text-slate-400 mt-0.5">Monthly deposit income in USD</p>
+              <p className="text-xs text-slate-400 mt-0.5">Monthly deposit income in UAH</p>
             </div>
             <div className="text-right">
-              <p className="text-xl font-bold text-slate-800" style={{ fontFamily: 'Syne, sans-serif' }}>${totalRevenue.toLocaleString()}</p>
+              <p className="text-xl font-bold text-slate-800" style={{ fontFamily: 'Syne, sans-serif' }}>{totalRevenue.toLocaleString()} грн</p>
               <p className="text-xs text-emerald-500 font-medium">Total period</p>
             </div>
           </div>
@@ -84,10 +84,10 @@ const AnalyticsPage: React.FC = () => {
             <BarChart data={filteredRevenue} barSize={32}>
               <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" vertical={false} />
               <XAxis dataKey="month" tick={{ fontSize: 11, fill: '#94a3b8' }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fontSize: 11, fill: '#94a3b8' }} axisLine={false} tickLine={false} tickFormatter={v => `$${(v/1000).toFixed(0)}k`} />
+              <YAxis tick={{ fontSize: 11, fill: '#94a3b8' }} axisLine={false} tickLine={false} tickFormatter={v => `${(v/1000).toFixed(0)}k грн`} />
               <Tooltip
                 contentStyle={{ background: '#1e293b', border: 'none', borderRadius: '12px', color: '#f8fafc', fontSize: 13 }}
-                formatter={(v: number) => [`$${v.toLocaleString()}`, 'Revenue']}
+                formatter={(v: number) => [`${v.toLocaleString()} грн`, 'Revenue']}
                 cursor={{ fill: '#f1f5f9' }}
               />
               <Bar dataKey="revenue" fill="url(#tealGrad)" radius={[6, 6, 0, 0]} />

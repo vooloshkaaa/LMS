@@ -91,7 +91,7 @@ const DashboardPage: React.FC = () => {
           <div className="grid grid-cols-4 gap-4">
             <StatCard title="Active Students" value={students.length} change="+12%" positive icon={Users} color="bg-teal-500/10 text-teal-600" delay={0} />
             <StatCard title="Today's Lessons" value={todayLessons.length} change="+2" positive icon={BookOpen} color="bg-blue-500/10 text-blue-600" delay={0.05} />
-            <StatCard title="Total Revenue" value={`$${totalRevenue.toLocaleString()}`} change="+18%" positive icon={DollarSign} color="bg-emerald-500/10 text-emerald-600" delay={0.1} />
+            <StatCard title="Total Revenue" value={`${totalRevenue.toLocaleString()} грн`} change="+18%" positive icon={DollarSign} color="bg-emerald-500/10 text-emerald-600" delay={0.1} />
             <StatCard title="Teachers Active" value={teachers.length} change="0%" positive={false} icon={Users} color="bg-purple-500/10 text-purple-600" delay={0.15} />
           </div>
         )}
@@ -127,10 +127,10 @@ const DashboardPage: React.FC = () => {
                 <BarChart data={revenueData} barSize={24}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" vertical={false} />
                   <XAxis dataKey="month" tick={{ fontSize: 11, fill: '#94a3b8', fontFamily: 'Plus Jakarta Sans, sans-serif' }} axisLine={false} tickLine={false} />
-                  <YAxis tick={{ fontSize: 11, fill: '#94a3b8', fontFamily: 'Plus Jakarta Sans, sans-serif' }} axisLine={false} tickLine={false} tickFormatter={v => `$${v/1000}k`} />
+                  <YAxis tick={{ fontSize: 11, fill: '#94a3b8', fontFamily: 'Plus Jakarta Sans, sans-serif' }} axisLine={false} tickLine={false} tickFormatter={v => `${v/1000}k грн`} />
                   <Tooltip
                     contentStyle={{ background: '#1e293b', border: 'none', borderRadius: '10px', color: '#f8fafc', fontSize: 12 }}
-                    formatter={(v: number) => [`$${v.toLocaleString()}`, 'Revenue']}
+                    formatter={(v: number) => [`${v.toLocaleString()} грн`, 'Revenue']}
                   />
                   <Bar dataKey="revenue" fill="#0d9488" radius={[5, 5, 0, 0]} />
                 </BarChart>

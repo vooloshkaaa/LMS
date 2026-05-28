@@ -280,7 +280,7 @@ const SchedulePage: React.FC = () => {
                 {([
                   [Clock, `${selectedLesson.date} · ${selectedLesson.startTime} – ${selectedLesson.endTime}`],
                   [MapPin, selectedLesson.classroom],
-                  [BookOpen, `Cost: $${selectedLesson.cost} per student`],
+                  [BookOpen, `Cost: ${selectedLesson.cost} грн per student`],
                   [Users, `Attendees: ${selectedLesson.attendees?.length ?? 0}`],
                 ] as [React.ElementType, string][]).map(([Icon, text], i) => (
                   <div key={i} className="flex items-center gap-3 text-sm text-slate-600">
@@ -404,7 +404,7 @@ const SchedulePage: React.FC = () => {
                     <input type="time" value={form.endTime} onChange={e => setForm(f => ({ ...f, endTime: e.target.value }))} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">Cost ($)</label>
+                    <label className="block text-sm font-medium text-slate-700 mb-1">Cost (грн)</label>
                     <input type="number" value={form.cost} onChange={e => setForm(f => ({ ...f, cost: parseFloat(e.target.value) || 0 }))} className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm" />
                   </div>
                 </div>

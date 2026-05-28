@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { Toaster } from "sonner";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { LMSProvider } from "@/contexts/LMSContext";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 import LoginPage from "@/pages/LoginPage";
 import DashboardPage from "@/pages/DashboardPage";
@@ -19,8 +20,9 @@ import MyBalancePage from "@/pages/MyBalancePage";
 
 function App() {
   return (
-    <AuthProvider>
-      <LMSProvider>
+    <LanguageProvider>
+      <AuthProvider>
+        <LMSProvider>
         <Suspense fallback={
           <div className="min-h-screen bg-[#0F172A] flex items-center justify-center">
             <div className="w-8 h-8 border-2 border-teal-500 border-t-transparent rounded-full animate-spin" />
@@ -56,8 +58,9 @@ function App() {
             }}
           />
         </Suspense>
-      </LMSProvider>
-    </AuthProvider>
+        </LMSProvider>
+      </AuthProvider>
+    </LanguageProvider>
   );
 }
 

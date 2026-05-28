@@ -37,20 +37,20 @@ const MyBalancePage: React.FC = () => {
           </div>
           <p className="text-slate-400 text-sm mb-1">Current Balance</p>
           <p className="text-5xl font-bold" style={{ fontFamily: 'Syne, sans-serif' }}>
-            ${student?.balance.toFixed(2) || '0.00'}
+            {student?.balance.toFixed(2) || '0.00'} грн
           </p>
           <div className="flex items-center gap-4 mt-4 pt-4 border-t border-slate-700">
             <div>
               <p className="text-xs text-slate-400">Total Deposited</p>
               <p className="text-lg font-bold text-emerald-400" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                +${deposits.toFixed(2)}
+                +{deposits.toFixed(2)} грн
               </p>
             </div>
             <div className="w-px h-8 bg-slate-700" />
             <div>
               <p className="text-xs text-slate-400">Total Spent</p>
               <p className="text-lg font-bold text-red-400" style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                ${Math.abs(spent).toFixed(2)}
+                {Math.abs(spent).toFixed(2)} грн
               </p>
             </div>
           </div>
@@ -90,7 +90,7 @@ const MyBalancePage: React.FC = () => {
                   <div className="text-right">
                     <p className={`text-base font-bold ${payment.amount > 0 ? 'text-emerald-600' : 'text-red-500'}`}
                       style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                      {payment.amount > 0 ? '+' : ''}${Math.abs(payment.amount).toFixed(2)}
+                      {payment.amount > 0 ? '+' : ''}{Math.abs(payment.amount).toFixed(2)} грн
                     </p>
                     <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded-full ${
                       payment.type === 'DEPOSIT' ? 'bg-emerald-100 text-emerald-700' : 'bg-blue-100 text-blue-700'

@@ -34,8 +34,8 @@ const PaymentsPage: React.FC = () => {
         {/* Stats */}
         <div className="grid grid-cols-3 gap-4">
           {[
-            { label: 'Total Deposits', value: `$${totalDeposits.toLocaleString()}`, icon: TrendingUp, color: 'bg-emerald-50 text-emerald-600', badge: 'bg-emerald-100 text-emerald-700' },
-            { label: 'Lesson Revenue', value: `$${Math.abs(totalLessonPayments).toLocaleString()}`, icon: CreditCard, color: 'bg-blue-50 text-blue-600', badge: 'bg-blue-100 text-blue-700' },
+            { label: 'Total Deposits', value: `${totalDeposits.toLocaleString()} грн`, icon: TrendingUp, color: 'bg-emerald-50 text-emerald-600', badge: 'bg-emerald-100 text-emerald-700' },
+            { label: 'Lesson Revenue', value: `${Math.abs(totalLessonPayments).toLocaleString()} грн`, icon: CreditCard, color: 'bg-blue-50 text-blue-600', badge: 'bg-blue-100 text-blue-700' },
             { label: 'Total Transactions', value: payments.length, icon: DollarSign, color: 'bg-teal-50 text-teal-600', badge: 'bg-teal-100 text-teal-700' },
           ].map((stat, i) => (
             <motion.div
@@ -122,7 +122,7 @@ const PaymentsPage: React.FC = () => {
                     <td className="px-5 py-3.5">
                       <span className={`text-sm font-bold ${payment.amount > 0 ? 'text-emerald-600' : 'text-red-500'}`}
                         style={{ fontFamily: 'JetBrains Mono, monospace' }}>
-                        {payment.amount > 0 ? '+' : ''}{payment.amount.toFixed(2)}
+                        {payment.amount > 0 ? '+' : ''}{payment.amount.toFixed(2)} грн
                       </span>
                     </td>
                     <td className="px-5 py-3.5 text-sm text-slate-600">{payment.description}</td>
